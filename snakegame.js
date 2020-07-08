@@ -130,5 +130,8 @@ function gameloop(){
     update();
 }
 
-init();
-f = setInterval(gameloop,100);
+function play(){
+    document.getElementById('playbtn').style.display="none"
+    init();
+    f = setInterval(gameloop,100);
+}
