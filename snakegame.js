@@ -81,6 +81,11 @@ function init(){
 			if(this.cells[0].y<0 || this.cells[0].x<0 || this.cells[0].x>last_x || this.cells[0].y>last_y){      
                 pen.font = "60px Roboto";
                 pen.fillText("GAME OVER",120,300);
+                // sound apply
+                var soundgameover = new Howl({
+                    src: ['./sounds/clay.mp3']
+                });      
+                soundgameover.play();
                 game_over = true;
 			}
         },
@@ -130,12 +135,7 @@ function getRandomFood(){
 }
 
 function gameloop(){
-    if(game_over==true){ 
-        // sound apply
-        var sound = new Howl({
-            src: ['./sounds/clay.mp3']
-        });      
-        sound.play();   
+    if(game_over==true){    
         clearInterval(f);
     }
     draw();
