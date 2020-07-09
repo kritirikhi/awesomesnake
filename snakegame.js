@@ -38,6 +38,13 @@ function init(){
             if( (Xhead==food.x && Yhead==food.y)  ){
                 score++;
                 food=getRandomFood();
+
+                // sound apply
+                var sound = new Howl({
+                    src: ['./sounds/strike.mp3']
+                });
+                  
+                sound.play();
             }
 
             else{
