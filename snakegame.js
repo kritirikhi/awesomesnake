@@ -130,7 +130,12 @@ function getRandomFood(){
 }
 
 function gameloop(){
-    if(game_over==true){    
+    if(game_over==true){ 
+        // sound apply
+        var sound = new Howl({
+            src: ['./sounds/clay.mp3']
+        });      
+        sound.play();   
         clearInterval(f);
     }
     draw();
