@@ -137,6 +137,7 @@ function getRandomFood(){
 function gameloop(){
     if(game_over==true){    
         clearInterval(f);
+        document.getElementById('playbtn').style.display="inline"
     }
     draw();
     update();
