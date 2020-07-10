@@ -19,7 +19,7 @@
     </style>
 </head>
 
-<body>
+<body onload="ready()">
     <div class="container-fluid bg-success">    
         <div>
             <h1 style="color:#fdffbd;font-family:Georgia, serif;text-align:center">Awesome Snake</h1>
@@ -32,16 +32,19 @@
 
             <div class="col-sm-6 ml-4">
                 <img src="images/trophy.png" style="height:35px;width:30px">
-                <span style="font-size:28px" id="snakescore">0</span>  
+                <span style="font-size:28px" id="snakescore">0</span> 
+                <img class="ml-3" src="images/score.png" style="height:40px;width:40px">
+                <span style="font-size:28px" id="highscore"></span>  
                 <input type="button" id="playbtn" class="btn btn-sm btn-success ml-3" value="PLAY" onclick="play()">
             </div>
         </div>
 
-        <div class="row col-sm">
+        <div class="row col-sm mt-2">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <canvas id='snakecanvas' style="width:600px; height:600px"></canvas>
+                <canvas id='snakecanvas' style="width:500px;height:500px"></canvas>
             </div>
+            <div class="col-sm-3"></div>
         </div>
     </div>
     <script src='snakegame.js'></script>

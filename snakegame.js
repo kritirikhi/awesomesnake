@@ -1,9 +1,14 @@
+function ready(){
+    highscore = localStorage.getItem('highscore')
+    document.getElementById('highscore').innerText = +highscore
+}
+
 function init(){
     canvas = document.getElementById('snakecanvas');
-    W = canvas.width = 600;
-    H = canvas.height = 600;
+    W = canvas.width = 500;
+    H = canvas.height = 500;
     pen = canvas.getContext('2d');
-    cs = 30;
+    cs = 25;
     game_over=false;
     score=0;
 
@@ -37,6 +42,9 @@ function init(){
 
             if( (Xhead==food.x && Yhead==food.y)  ){
                 score++;
+                if(score > highscore){
+                    localStorage.setItem('highscore',score)
+                }
                 food=getRandomFood();
 
                 // sound apply
@@ -78,14 +86,18 @@ function init(){
 			var last_x = Math.round(W/cs);
 			var last_y = Math.round(H/cs);
 
-			if(this.cells[0].y<0 || this.cells[0].x<0 || this.cells[0].x>last_x || this.cells[0].y>last_y){      
+			if(this.cells[0].y<0 || this.cells[0].x<0 || this.cells[0].x>=last_x || this.cells[0].y>=last_y){      
                 pen.font = "60px Roboto";
-                pen.fillText("GAME OVER",120,300);
+                pen.fillText("GAME OVER",70,250);
                 // sound apply
                 var soundgameover = new Howl({
                     src: ['./sounds/clay.mp3']
                 });      
                 soundgameover.play();
+                if(score>highscore){    
+                    document.getElementById('highscore').innerText = score    
+                }
+                
                 game_over = true;
 			}
         },
@@ -145,6 +157,7 @@ function gameloop(){
 
 function play(){
     document.getElementById('playbtn').style.display="none"
+    ready()
     init();
     f = setInterval(gameloop,100);
 }
